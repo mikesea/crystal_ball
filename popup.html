@@ -9,16 +9,13 @@ function form_handler(){
 	
     $.get(query, function(data) {
     	var taskname = $("[nodeName='entry']", data).find("[nodeName='gsx:title']").slice(0,1).text();
-    	//var taskname = $("[nodeName='entry']", data).find("[nodeName='gsx:title']").text();
     	var taskdesc = $("[nodeName='entry']", data).find("[nodeName='gsx:helpcenter']").slice(0,1).text();
     	var taskspec = $("[nodeName='entry']", data).find("[nodeName='gsx:notes']").slice(0,1).text();
     
       
       	var compiledDesc = '<p class="desc_line"><span class="desc_title">Name: </span><span class="desc_text">' + taskname + '</p>';
-      	  compiledDesc += '<p class="desc_line"><span class="desc_title">Help Center: </span><span class="desc_text">' + '<a href="' + taskdesc + '" target="_blank">Help Center Link</a>' + '</p>';
-      		//compiledDesc += '<p class="desc_line"><span class="desc_title">Help Center: </span><span class="desc_text">' + taskdesc + '</p>';
+      	  compiledDesc += '<p class="desc_line"><span class="desc_title">Help Center: </span><span class="desc_text">' + '<a href="' + taskdesc + '" target="_blank">' + taskdesc + '</a>' + '</p>';
        		compiledDesc += '<p class="desc_line"><span class="desc_title">Notes: </span><span class="desc_text">' + taskspec + '</p>';
-       		//compiledDesc += '<p class="desc_line"><span class="desc_title">DEBUG INFO: </span><span class="desc_text">' + debug + '</p>';
         document.getElementById('description').innerHTML = compiledDesc;
     });
 }
@@ -40,12 +37,7 @@ $("#form_crystalball").keyup(function(event){
 <hr />
 <div id="description">
 <br />
-<center><span style="color:#999999">Learn some stuff dammit!</span></center>
-<br />
-<br />
-<br />
-<br />
-<center><span style="color:#999999">&copy; Your friendly deployment pals</span></center><br />
+<center><span style="color:#999999">Tip: Use a specific term like GAMME, Outlook, Gmail, etc.</span></center>
 
 </div>
 </body>
