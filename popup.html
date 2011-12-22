@@ -1,0 +1,51 @@
+<html>
+<head>
+<script type="text/javascript">
+
+function form_handler(){
+	var taskQuery = document.getElementById('form_crystalball').value;
+	var queryPage = 'https://spreadsheets.google.com/feeds/list/0Av3oOgAM4ekrdHhtWFVHajVxV0ZlcTZsTm1lVXRvOFE/1/private/full?sq=keywords%3D';
+	var query = queryPage + taskQuery;
+	
+    $.get(query, function(data) {
+    	var taskname = $("[nodeName='entry']", data).find("[nodeName='gsx:title']").slice(0,1).text();
+    	//var taskname = $("[nodeName='entry']", data).find("[nodeName='gsx:title']").text();
+    	var taskdesc = $("[nodeName='entry']", data).find("[nodeName='gsx:helpcenter']").slice(0,1).text();
+    	var taskspec = $("[nodeName='entry']", data).find("[nodeName='gsx:notes']").slice(0,1).text();
+    
+      
+      	var compiledDesc = '<p class="desc_line"><span class="desc_title">Name: </span><span class="desc_text">' + taskname + '</p>';
+      		compiledDesc += '<p class="desc_line"><span class="desc_title">Help Center: </span><span class="desc_text">' + taskdesc + '</p>';
+       		compiledDesc += '<p class="desc_line"><span class="desc_title">Notes: </span><span class="desc_text">' + taskspec + '</p>';
+       		//compiledDesc += '<p class="desc_line"><span class="desc_title">DEBUG INFO: </span><span class="desc_text">' + debug + '</p>';
+        document.getElementById('description').innerHTML = compiledDesc;
+    });
+}
+
+$("#form_crystalball").keyup(function(event){
+  if(event.keyCode == 13){
+    $("#form_submit").click();
+  }
+});
+</script>
+	<script src='jquery-1.5.1.js'></script>
+	<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+	<form>
+		<label for="term">Search:</label> <input type="text" id="form_crystalball" name="term" size="40" />
+		<input type="submit" id="form_submit" value="Go" onClick="form_handler(this); return false;">
+	</form>
+<hr />
+<div id="description">
+<br />
+<center><span style="color:#999999">Learn some stuff dammit!</span></center>
+<br />
+<br />
+<br />
+<br />
+<center><span style="color:#999999">&copy; Your friendly deployment pals</span></center><br />
+
+</div>
+</body>
+</html>
