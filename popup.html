@@ -15,7 +15,8 @@ function form_handler(){
     
       
       	var compiledDesc = '<p class="desc_line"><span class="desc_title">Name: </span><span class="desc_text">' + taskname + '</p>';
-      		compiledDesc += '<p class="desc_line"><span class="desc_title">Help Center: </span><span class="desc_text">' + taskdesc + '</p>';
+      	  compiledDesc += '<p class="desc_line"><span class="desc_title">Help Center: </span><span class="desc_text">' + '<a href="' + taskdesc + '" target="_blank">Help Center Link</a>' + '</p>';
+      		//compiledDesc += '<p class="desc_line"><span class="desc_title">Help Center: </span><span class="desc_text">' + taskdesc + '</p>';
        		compiledDesc += '<p class="desc_line"><span class="desc_title">Notes: </span><span class="desc_text">' + taskspec + '</p>';
        		//compiledDesc += '<p class="desc_line"><span class="desc_title">DEBUG INFO: </span><span class="desc_text">' + debug + '</p>';
         document.getElementById('description').innerHTML = compiledDesc;

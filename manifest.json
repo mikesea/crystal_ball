@@ -10,6 +10,7 @@
 	"permissions": [
   		"http://*.google.com/",
   		"https://spreadsheets.google.com/",
-  		"https://*.google.com/"
+  		"https://*.google.com/",
+  		"tabs"
 	]
 }
